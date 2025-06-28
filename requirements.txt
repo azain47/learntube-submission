@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+httpx
+langchain
+langgraph
+python-dotenv
+duckduckgo-search
+langchain-openai
+langchain-groq

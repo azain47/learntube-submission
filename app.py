@@ -20,7 +20,7 @@ def get_llm(provider, api_key):
         return ChatOpenAI(model="gpt-4.1", temperature=0.3, streaming=True)
     elif provider == "Groq":
         os.environ["GROQ_API_KEY"] = api_key
-        return ChatGroq(temperature=0.3, model_name="llama-3.3-70b-versatile", streaming=True)
+        return ChatGroq(model="llama-3.3-70b-versatile", temperature=0.3, streaming=True)
     return None
 
 # --- Session State Initialization ---
@@ -88,8 +88,7 @@ def display_messages():
 if "profile_data" in st.session_state:
     # Initial analysis if chat is empty
     if not st.session_state.messages:
-        config = {"configurable": {"thread_id": st.session_state.session_id}}
-        
+        config = {"configurable": {"thread_id": st.session_state.session_id}}        
         # Add initial message to session state first
         initial_prompt = HumanMessage(content="Analyze my profile by using the Profile Analyzer tool.")
         st.session_state.messages.append(initial_prompt)
